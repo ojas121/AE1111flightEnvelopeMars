@@ -103,22 +103,22 @@ for density in densities:
     vmax = np.argwhere(np.diff(np.sign(pa - pr))).flatten()
     vmaxs.append(vmax[0])
 
-vliftmaxs = []
+vliftmins = []
 for density in densities:
     velocities = np.arange(110, 1000, 0.5)
     lift = np.multiply(0.5*density*s*clmax, np.square(velocities))
     weight = w
     vmaxlift = np.argwhere(np.diff(np.sign(lift - weight))).flatten()
     if vmaxlift.size == 0:
-        vliftmaxs.append(0)
+        vliftmins.append(0)
     else:
-        vliftmaxs.append(vmaxlift[0])
+        vliftmins.append(vmaxlift[0])
 
 # vs = np.arange(0, 52, 1)
 
 plt.plot(minVs, heights, label="Stall speed", linestyle="dashdot")
 plt.plot(vmaxs, heights,linestyle="dotted", label="Maximum speed")
-plt.plot(vliftmaxs, heights, "--", label="Minimum lift")
+plt.plot(vliftmins, heights, "--", label="Minimum lift")
 plt.legend()
 plt.title("Flight Envelope Mars")
 ticks = ticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/1000))
