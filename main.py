@@ -78,7 +78,7 @@ densities = [0.015029862983125,
              0.000313861836193,
              0.000291439344378]
 clmax = 1.340471
-mass = 12
+mass = 12*1.5
 span = 3
 chord = 0.15
 
@@ -123,5 +123,6 @@ plt.legend()
 plt.title("Flight Envelope Mars")
 ticks = ticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/1000))
 ax1.yaxis.set_major_formatter(ticks)
-ax1.annotate("Flight envelope", xy=(300, 20000), xytext=(500, 15000), arrowprops=dict(arrowstyle="->", facecolor='black'))
+ax1.annotate("Flight envelope", xy=(195, 8000), xytext=(300, 7000), arrowprops=dict(arrowstyle="->", facecolor='black'))
+ax1.set_xlim(right=700)
 plt.show()
