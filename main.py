@@ -78,9 +78,9 @@ densities = [0.015029862983125,
              0.000313861836193,
              0.000291439344378]
 clmax = 1.340471
-mass = 12*1.5
-span = 3
-chord = 0.15
+mass = 12
+span = 3*2
+chord = 0.15/2
 
 s = span * chord
 w = mass * 3.71
@@ -88,8 +88,8 @@ w = mass * 3.71
 minVs = vmin(w, s, densities, clmax)
 
 pa = 274.92
-cl = 0.349729
-cd = 0.015091
+cl = 0.004286
+cd = 0.012400085888479
 
 
 cdmax = 0.058003
@@ -119,10 +119,11 @@ for density in densities:
 plt.plot(minVs, heights, label="Stall speed", linestyle="dashdot")
 plt.plot(vmaxs, heights,linestyle="dotted", label="Maximum speed")
 plt.plot(vliftmins, heights, "--", label="Minimum lift")
+plt.plot([0, 1200], [34000, 35000], label="Service ceiling")
 plt.legend()
 plt.title("Flight Envelope Mars")
 ticks = ticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/1000))
 ax1.yaxis.set_major_formatter(ticks)
 ax1.annotate("Flight envelope", xy=(195, 8000), xytext=(300, 7000), arrowprops=dict(arrowstyle="->", facecolor='black'))
-ax1.set_xlim(right=700)
+# ax1.set_xlim(right=700)
 plt.show()
